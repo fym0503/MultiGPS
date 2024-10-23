@@ -1,0 +1,120 @@
+epoch=99
+[5790 9624 3069 ... 5965 6243 2932]
+Task recon loss in train:0.8330405354499817
+Task recon loss in val:0.8735449314117432
+Task cls loss in train:0.04889725148677826
+Task cls loss in val:0.19142073392868042
+epoch=199
+[6943 9192 1529 ... 1841 3002 7430]
+Task recon loss in train:0.8262031078338623
+Task recon loss in val:0.8672995567321777
+Task cls loss in train:0.11574405431747437
+Task cls loss in val:0.19424116611480713
+epoch=299
+[6943  805 9192 ... 4708 6134 3733]
+Task recon loss in train:0.8273297548294067
+Task recon loss in val:0.8684989213943481
+Task cls loss in train:0.12271969020366669
+Task cls loss in val:0.18990999460220337
+epoch=399
+[6943  805 5115 ... 5491 4604 6514]
+Task recon loss in train:0.8207558989524841
+Task recon loss in val:0.8662037253379822
+Task cls loss in train:0.12974220514297485
+Task cls loss in val:0.18019476532936096
+epoch=499
+[6943  805 5115 ... 7290 7316 6986]
+Task recon loss in train:0.8220506906509399
+Task recon loss in val:0.8614947199821472
+Task cls loss in train:0.10875771194696426
+Task cls loss in val:0.1479398012161255
+epoch=599
+[6943 5115  805 ... 4278 6496 3434]
+Task recon loss in train:0.82151198387146
+Task recon loss in val:0.873124361038208
+Task cls loss in train:0.10527417063713074
+Task cls loss in val:0.1671578586101532
+epoch=699
+[6943 5115 9192 ... 6371 2929 6717]
+Task recon loss in train:0.8131506443023682
+Task recon loss in val:0.8670355081558228
+Task cls loss in train:0.09962765127420425
+Task cls loss in val:0.18515905737876892
+epoch=799
+[6943 9192 7663 ... 3769 6132 1902]
+Task recon loss in train:0.8109000325202942
+Task recon loss in val:0.860628068447113
+Task cls loss in train:0.09768690168857574
+Task cls loss in val:0.1494421511888504
+epoch=899
+[6943 7663 9192 ... 2986 6052 3579]
+Task recon loss in train:0.8096023797988892
+Task recon loss in val:0.8581417798995972
+Task cls loss in train:0.09274456650018692
+Task cls loss in val:0.1717248260974884
+epoch=999
+[6943 7663 9192 ... 6789 2711 9638]
+Task recon loss in train:0.8076589703559875
+Task recon loss in val:0.8760082721710205
+Task cls loss in train:0.08707792311906815
+Task cls loss in val:0.1600198596715927
+epoch=1099
+[6943 7663 9192 ... 2922 5626 3013]
+Task recon loss in train:0.8062418103218079
+Task recon loss in val:0.8621150851249695
+Task cls loss in train:0.08966483175754547
+Task cls loss in val:0.18085439503192902
+epoch=1199
+[6943 7663 1529 ... 7511  947 7211]
+Task recon loss in train:0.8025756478309631
+Task recon loss in val:0.876015305519104
+Task cls loss in train:0.07859194278717041
+Task cls loss in val:0.16445042192935944
+epoch=1299
+[6943 7663  805 ... 5551 9673 3134]
+Task recon loss in train:0.8032824397087097
+Task recon loss in val:0.873927891254425
+Task cls loss in train:0.08373874425888062
+Task cls loss in val:0.17861756682395935
+epoch=1399
+[7663 6943  805 ... 6129 9673 5789]
+Task recon loss in train:0.7960633635520935
+Task recon loss in val:0.8792372941970825
+Task cls loss in train:0.08378041535615921
+Task cls loss in val:0.22577252984046936
+epoch=1499
+[7663 6943  805 ... 7056 8854 1408]
+Task recon loss in train:0.7912419438362122
+Task recon loss in val:0.8785644173622131
+Task cls loss in train:0.07419420778751373
+Task cls loss in val:0.17318616807460785
+epoch=1599
+[7663 6943 8964 ... 5455 7722 9676]
+Task recon loss in train:0.7939757108688354
+Task recon loss in val:0.8650524020195007
+Task cls loss in train:0.07772839069366455
+Task cls loss in val:0.21311596035957336
+epoch=1699
+[6943 8964 7663 ... 5455 2873 3900]
+Task recon loss in train:0.7896659970283508
+Task recon loss in val:0.8818961381912231
+Task cls loss in train:0.07475460320711136
+Task cls loss in val:0.2182711809873581
+epoch=1799
+[6943 7663 8964 ... 3619  620 1095]
+Task recon loss in train:0.7885313034057617
+Task recon loss in val:0.8657805919647217
+Task cls loss in train:0.0730094388127327
+Task cls loss in val:0.22760307788848877
+epoch=1899
+[8964 6943 7663 ... 2580 3178 8982]
+Task recon loss in train:0.790597677230835
+Task recon loss in val:0.9017389416694641
+Task cls loss in train:0.08281652629375458
+Task cls loss in val:0.2541848421096802
+epoch=1999
+[8964 6943 7663 ... 6987  400 9017]
+Task recon loss in train:0.7834711670875549
+Task recon loss in val:0.8733586072921753
+Task cls loss in train:0.06917835772037506
+Task cls loss in val:0.21934020519256592
