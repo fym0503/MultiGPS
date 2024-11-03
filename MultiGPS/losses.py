@@ -45,5 +45,6 @@ def get_loss(args):
         loss_fn['recon'] = HurdleLoss(5)
     else:
         loss_fn['recon'] = F.mse_loss
+    loss_fn['coo'] = F.mse_loss
         
     return loss_fn

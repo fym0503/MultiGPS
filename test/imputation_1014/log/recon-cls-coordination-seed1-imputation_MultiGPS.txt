@@ -1,0 +1,80 @@
+epoch=99
+[778 234 247 ... 648 458 619]
+Task recon loss in train:0.8196514844894409
+Task recon loss in val:0.8218277096748352
+Task cls loss in train:0.10804371535778046
+Task cls loss in val:0.18624867498874664
+Task coo loss in train:0.2707214951515198
+Task coo loss in val:0.28226879239082336
+epoch=199
+[778 234 360 ...  92 648 619]
+Task recon loss in train:0.8249847888946533
+Task recon loss in val:0.8306882381439209
+Task cls loss in train:0.19060462713241577
+Task cls loss in val:0.23679232597351074
+Task coo loss in train:0.26234281063079834
+Task coo loss in val:0.2790941298007965
+epoch=299
+[778 234 360 ...  92  46 619]
+Task recon loss in train:0.8230782151222229
+Task recon loss in val:0.8279261589050293
+Task cls loss in train:0.1909976452589035
+Task cls loss in val:0.2258017510175705
+Task coo loss in train:0.25766927003860474
+Task coo loss in val:0.2658649981021881
+epoch=399
+[234 778 360 ...  92  46 619]
+Task recon loss in train:0.8201943039894104
+Task recon loss in val:0.8312909007072449
+Task cls loss in train:0.1932159662246704
+Task cls loss in val:0.24853485822677612
+Task coo loss in train:0.2499624341726303
+Task coo loss in val:0.26383939385414124
+epoch=499
+[234 360 778 ...  92  46 619]
+Task recon loss in train:0.8153077363967896
+Task recon loss in val:0.8274669051170349
+Task cls loss in train:0.15724214911460876
+Task cls loss in val:0.23796701431274414
+Task coo loss in train:0.2482420802116394
+Task coo loss in val:0.2555371820926666
+epoch=599
+[234 150 360 ... 458  92 619]
+Task recon loss in train:0.8141026496887207
+Task recon loss in val:0.8254618644714355
+Task cls loss in train:0.1554853320121765
+Task cls loss in val:0.24596916139125824
+Task coo loss in train:0.24432915449142456
+Task coo loss in val:0.25136706233024597
+epoch=699
+[150 234 247 ...  92 458 619]
+Task recon loss in train:0.8117883205413818
+Task recon loss in val:0.8315632939338684
+Task cls loss in train:0.13978730142116547
+Task cls loss in val:0.2771783769130707
+Task coo loss in train:0.24101175367832184
+Task coo loss in val:0.2610464096069336
+epoch=799
+[150 247 234 ... 267  92 217]
+Task recon loss in train:0.8085836172103882
+Task recon loss in val:0.82135409116745
+Task cls loss in train:0.12353231012821198
+Task cls loss in val:0.23359040915966034
+Task coo loss in train:0.2388145625591278
+Task coo loss in val:0.2450149804353714
+epoch=899
+[150 234 247 ... 524 619  92]
+Task recon loss in train:0.8075201511383057
+Task recon loss in val:0.8218445777893066
+Task cls loss in train:0.11788720637559891
+Task cls loss in val:0.2504575848579407
+Task coo loss in train:0.23480097949504852
+Task coo loss in val:0.2564724385738373
+epoch=999
+[150 234 232 ...  46 524  92]
+Task recon loss in train:0.8058297634124756
+Task recon loss in val:0.8193638920783997
+Task cls loss in train:0.10376349836587906
+Task cls loss in val:0.25378963351249695
+Task coo loss in train:0.23246458172798157
+Task coo loss in val:0.25266411900520325

@@ -51,6 +51,11 @@ def get_dataset(args):
         cls_data = adata.obs['cell_type'].astype('category').cat.codes.values
         datas.append(cls_data)
         new_tasks.append('cls')
+        
+    if "coordination" in tasks or "standard_coordination" in tasks:
+        coo = adata.obsm['spatial']
+        datas.append(coo)
+        new_tasks.append('coo')
     
     return var, new_tasks, datas
 

@@ -19,6 +19,8 @@ def get_model(tasks, datas, args):
                 model[task] = MLPModel(128, data.shape[1]*2, hidden_dims=[128, 128], activation=args.activation).to(device)
             else:
                 model[task] = MLPModel(128, data.shape[1], hidden_dims=[128, 128], activation=args.activation).to(device)
+        elif task == 'coo':
+            model[task] = MLPModel(128, data.shape[1], hidden_dims=[128, 128], activation=args.activation).to(device)
     return model
 
 def get_optimizer(model_params, args):

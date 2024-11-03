@@ -1,0 +1,3 @@
+Embedding,Isolated labels,KMeans NMI,KMeans ARI,Silhouette label,cLISI,Silhouette batch,iLISI,KBET,Graph connectivity,PCR comparison,Batch correction,Bio conservation,Total
+X_pca,0.4988946,0.5730527804778429,0.2220491784312832,0.40858640521764755,0.9996096680803996,0.8376348,0.5771303176879883,0.8743230055062209,0.7404732353682776,0.0,0.6059122720854221,0.5404385268534982,0.5666280249462678
+Metric Type,Bio conservation,Bio conservation,Bio conservation,Bio conservation,Bio conservation,Batch correction,Batch correction,Batch correction,Batch correction,Batch correction,Aggregate score,Aggregate score,Aggregate score
