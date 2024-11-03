@@ -18,6 +18,7 @@ parser.add_argument("--gene_number",type=int, help="The number of genes to be se
 parser.add_argument("--target_adata", help="The target h5ad file to be evaluated")
 parser.add_argument("--output_dir", help="The output directory")
 parser.add_argument("--device")
+parser.add_argument("--tasks")
 parser.add_argument("--seed")
 args = parser.parse_args()
 
@@ -51,39 +52,61 @@ print(f"Selected Gene: {[adata_var[x] for x in gene_idx]}")
 
 ### Reconstruction ###
 
-raw_x = adata_target.X.copy()
-if isinstance(raw_x, csr_matrix):
-    raw_x = raw_x.toarray()
-standard_scaler = StandardScaler()
-raw_x = standard_scaler.fit_transform(raw_x)
+if 'recon' in args.tasks:
+    raw_x = adata_target.X.copy()
+    if isinstance(raw_x, csr_matrix):
+        raw_x = raw_x.toarray()
+    standard_scaler = StandardScaler()
+    raw_x = standard_scaler.fit_transform(raw_x)
 
-train_result, test_result = reconstruction_RMSE(raw_x[:,gene_idx], raw_x, repeat_times, device, epoch = 50 , lr = 0.01)
-print(f"recon train : {np.mean(train_result)}")
-print(f"recon test : {np.mean(test_result)}")
-np.savetxt(args.output_dir + args.file_name + "-RMSErecon_train.txt", train_result)
-np.savetxt(args.output_dir + args.file_name + "-RMSErecon_test.txt", test_result)
+    train_result, test_result = reconstruction_RMSE(raw_x[:,gene_idx], raw_x, repeat_times, device, epoch = 50 , lr = 0.01)
+    print(f"recon train : {np.mean(train_result)}")
+    print(f"recon test : {np.mean(test_result)}")
+    np.savetxt(args.output_dir + args.file_name + "-RMSErecon_train.txt", train_result)
+    np.savetxt(args.output_dir + args.file_name + "-RMSErecon_test.txt", test_result)
 
-train_result, test_result = reconstruction(raw_x[:,gene_idx], raw_x, repeat_times, device, epoch = 50 , lr = 0.01)
-print(f"recon train : {np.mean(train_result)}")
-print(f"recon test : {np.mean(test_result)}")
-np.savetxt(args.output_dir + args.file_name + "-Explained-Variance_recon_train.txt", train_result)
-np.savetxt(args.output_dir + args.file_name + "-Explained-Variance_recon_test.txt", test_result)
+    train_result, test_result = reconstruction(raw_x[:,gene_idx], raw_x, repeat_times, device, epoch = 50 , lr = 0.01)
+    print(f"recon train : {np.mean(train_result)}")
+    print(f"recon test : {np.mean(test_result)}")
+    np.savetxt(args.output_dir + args.file_name + "-Explained-Variance_recon_train.txt", train_result)
+    np.savetxt(args.output_dir + args.file_name + "-Explained-Variance_recon_test.txt", test_result)
 
 ### Cell type ###
+if 'cell_type' in args.tasks:
+    raw_x = adata_target.X.copy()
+    if isinstance(raw_x, csr_matrix):
+        raw_x = raw_x.toarray()
+    standard_scaler = StandardScaler()
+    raw_x = standard_scaler.fit_transform(raw_x)
 
-raw_x = adata_target.X.copy()
-if isinstance(raw_x, csr_matrix):
-    raw_x = raw_x.toarray()
-standard_scaler = StandardScaler()
-raw_x = standard_scaler.fit_transform(raw_x)
+    train_result, test_result = classification(raw_x[:,gene_idx],adata_target.obs['cell_type'].astype('category').cat.codes.values,repeat_times, device, epoch=10, lr = 1e-3)
+    np.savetxt(args.output_dir + args.file_name + "-celltype_cls_train.txt", train_result)
+    np.savetxt(args.output_dir + args.file_name + "-celltype_cls_test.txt", test_result)
+    print(f"cell type train : {np.mean(train_result)}")
+    print(f"cell type test : {np.mean(test_result)}")
 
-train_result, test_result = classification(raw_x[:,gene_idx],adata_target.obs['cell_type'].astype('category').cat.codes.values,repeat_times, device, epoch=10, lr = 1e-3)
-np.savetxt(args.output_dir + args.file_name + "-celltype_cls_train.txt", train_result)
-np.savetxt(args.output_dir + args.file_name + "-celltype_cls_test.txt", test_result)
-print(f"cell type train : {np.mean(train_result)}")
-print(f"cell type test : {np.mean(test_result)}")
+    result_df = clustering(raw_x[:,gene_idx],adata_target.obs['cell_type'].astype('category').cat.codes.values, device)
+    result_df.to_csv(args.output_dir + args.file_name + "-subcelltype_unsup.csv")
+    print(f"cell type NMI : {result_df.loc['X_pca', 'KMeans NMI']}")
+    
+### Spatial ###
+if 'spatial' in args.tasks:
+    adata_target.obs['cluster'] = adata_target.obs['parcellation_index'].astype('category').cat.codes
+    spatial_cluster_counts = Counter(adata_target.obs['parcellation_index'])
+    top_10_spatial_clusters = spatial_cluster_counts.most_common(10)
+    top_10_spatial_clusters_names = [cell_type for cell_type, count in top_10_spatial_clusters]
+    adata_target_subsample = adata_target[adata_target.obs['parcellation_index'].isin(top_10_spatial_clusters_names)].copy()
 
+    raw_x = adata_target_subsample.X.copy()
+    if isinstance(raw_x, csr_matrix):
+        raw_x = raw_x.toarray()
+    standard_scaler = StandardScaler()
+    raw_x = standard_scaler.fit_transform(raw_x)
 
-result_df = clustering(raw_x[:,gene_idx],adata_target.obs['cell_type'].astype('category').cat.codes.values, device)
-result_df.to_csv(args.output_dir + args.file_name + "-subcelltype_unsup.csv")
-print(f"cell type NMI : {result_df.loc['X_pca', 'KMeans NMI']}")
+    train_result, test_result = classification(raw_x[:,gene_idx],adata_target_subsample.obs['parcellation_index'].astype('category').cat.codes.values, repeat_times, device, epoch=10, lr=1e-3)
+    np.savetxt(args.output_dir + args.file_name + "-spatial_cls_train.txt", train_result)
+    np.savetxt(args.output_dir + args.file_name + "-spatial_cls_test.txt", test_result)
+    print(f"spatial train : {np.mean(train_result)}")
+    print(f"spatial test : {np.mean(test_result)}")
+    result_df = clustering(raw_x[:,gene_idx], adata_target_subsample.obs['parcellation_index'].astype('category').cat.codes.values, device)
+    result_df.to_csv(args.output_dir + args.file_name + "-spatial_unsup.csv")
